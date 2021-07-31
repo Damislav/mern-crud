@@ -1,0 +1,34 @@
+/* .todos_container {
+  /* display: flex;
+  background: red;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;*/
+/* width: 1200px;
+  margin: 0 auto; */
+
+@media screen and (max-width: 1200px) {
+  .todos_container {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
+}
+@media screen and (max-width: 780px) {
+  .todos_container {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .todos_container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .todos_container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}

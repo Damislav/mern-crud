@@ -1,0 +1,74 @@
+.todo-container {
+  margin-top: 1rem;
+
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: rgba(109, 48, 93, 0.513);
+  font-size: 18px;
+  transition: 0.2s;
+  color: white;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem !important;
+  margin-bottom: 1rem !important;
+  border-radius: 8px;
+  /* box-shadow: rgba(164, 164, 168, 0.2) 0px 7px 29px 0px; */
+  margin-left: 29rem;
+  margin-right: 29rem;
+
+  border: 1px solid black;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.item-text {
+  text-transform: capitalize;
+  font-weight: 500;
+  font-size: 1.7rem;
+}
+.completed {
+  text-decoration: line-through;
+}
+
+@media screen and (max-width: 1200px) {
+  .todo-container {
+    margin-right: 7rem;
+    margin-left: 7rem;
+  }
+  .item-text {
+    display: inline-block;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 780px) {
+  .todo-container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .item-text {
+    display: inline-block;
+    font-size: 1.2rem;
+  }
+  .todo-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+@media screen and (max-width: 320px) {
+  .todo-container {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+}

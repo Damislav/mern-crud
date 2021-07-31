@@ -3,6 +3,7 @@ import {
   DELETE_CONTACTS,
   GET_CONTACT,
   GET_CONTACTS,
+  TOGGLE_COMPLETED,
   UPDATE_CONTACT,
 } from "../actions/types";
 
@@ -36,6 +37,7 @@ export default function (state = initialState, action) {
         ...state,
         todos: [action.payload, ...state.todos],
       };
+
     case UPDATE_CONTACT: {
       return {
         ...state,
@@ -43,6 +45,16 @@ export default function (state = initialState, action) {
           return contact.id === action.payload.id
             ? (contact = action.payload)
             : contact;
+        }),
+      };
+    }
+    case TOGGLE_COMPLETED: {
+      return {
+        ...state,
+        todos: state.todos.map((todo) => {
+          return todo._id === action.payload.id
+            ? (todo = action.payload)
+            : todo;
         }),
       };
     }

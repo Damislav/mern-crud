@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addContacts } from "../../redux/actions/todoActions";
+import "./TodoForm.css";
 const TodoForm = ({ addContacts }) => {
   const [text, setText] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("hello");
+
     if (text) {
       const newTodo = {
         text: text,
@@ -21,9 +22,9 @@ const TodoForm = ({ addContacts }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form style={{ marginBottom: "1rem" }} onSubmit={handleSubmit}>
       <input onChange={handleChange} value={text} />
-      <button>Submit</button>
+      <button className="btn-form">Submit</button>
     </form>
   );
 };

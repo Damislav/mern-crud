@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
 import { getContacts } from "../../redux/actions/todoActions";
+import "./TodoContainer.css";
+
 const TodoContainer = (props) => {
   useEffect(() => {
     props.getContacts();
@@ -11,10 +12,11 @@ const TodoContainer = (props) => {
 
   return (
     <>
-      <TodoForm />
-      {props.todos.map((todo) => {
-        return <TodoItem key={todo._id} todo={todo} />;
-      })}
+      <div className="todos_container">
+        {props.todos.map((todo, i) => {
+          return <TodoItem index={i} key={todo._id} todo={todo} />;
+        })}
+      </div>
     </>
   );
 };

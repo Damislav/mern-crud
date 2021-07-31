@@ -5,8 +5,8 @@ const Todo = require("../models/Todo");
 // GET ALL TODOS
 router.get("/", async (req, res) => {
   try {
-    let todos = await Todo.find();
-    console.log(todos);
+    let todos = await Todo.find().sort({ createdAt: -1 });
+
     res.status(200).json(todos);
   } catch (err) {
     console.error(err.message);
@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const result = await Todo.findByIdAndDelete(id);
+    await Todo.findByIdAndDelete(id);
 
     res.status(200).json({ msg: "Delete was successfull" });
   } catch (err) {
@@ -65,4 +65,18 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.patch("/:id", async (req, res) => {
+  try {
+    const updatedTodo = await Todo.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedPost);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

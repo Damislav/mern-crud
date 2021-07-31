@@ -4,6 +4,7 @@ import {
   DELETE_CONTACTS,
   GET_CONTACT,
   GET_CONTACTS,
+  TOGGLE_COMPLETED,
   UPDATE_CONTACT,
 } from "./types";
 
@@ -17,10 +18,8 @@ export const getContacts = () => async (dispatch) => {
 };
 
 export const getContact = (id) => async (dispatch) => {
-  const res = await axios.get(
-    `https://jsonplaceholder.typicode.com/users/${id}`
-  );
-
+  const res = await axios.get(`${process.env.REACT_APP_API}/${id}`);
+  console.log(res.data);
   dispatch({
     type: GET_CONTACT,
     payload: res.data,
@@ -51,9 +50,12 @@ export const updateContact = (todo) => async (dispatch) => {
 };
 
 export const toggleCompletedTodo = (todo) => async (dispatch) => {
-  const res = await axios.put(`${process.env.REACT_APP_API}/${todo.id}`);
+  const res = await axios.patch(
+    `${process.env.REACT_APP_API}/${todo.id}/`,
+    todo
+  );
   dispatch({
-    type: UPDATE_CONTACT,
+    type: TOGGLE_COMPLETED,
     payload: res.data,
   });
 };
