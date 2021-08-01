@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import TodoItem from "./TodoItem";
 import { getContacts } from "../../redux/actions/todoActions";
 import "./TodoContainer.css";
+import Spinner from "../Spinner/Spinner";
 
 const TodoContainer = (props) => {
   useEffect(() => {
@@ -13,9 +14,13 @@ const TodoContainer = (props) => {
   return (
     <>
       <div className="todos_container">
-        {props.todos.map((todo, i) => {
-          return <TodoItem index={i} key={todo._id} todo={todo} />;
-        })}
+        {props.todos ? (
+          props.todos.map((todo, i) => {
+            return <TodoItem index={i} key={todo._id} todo={todo} />;
+          })
+        ) : (
+          <Spinner />
+        )}
       </div>
     </>
   );

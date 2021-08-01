@@ -1,11 +1,8 @@
-import React from 'react'
-
+import React from "react";
+import "./Spinner.css";
+import Loader from "./1488.gif";
 const Spinner = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <img src={Loader} alt="spinner" />;
+};
 
-export default Spinner
+export default Spinner;

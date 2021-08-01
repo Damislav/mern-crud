@@ -4,8 +4,18 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Login from "./pages/login";
 import Register from "./pages/register";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { loadUsers } from "./redux/actions/todoActions";
 
 function App() {
+  // let dispatch = useDispatch();
+  // const { user } = useSelector((state) => state.user);
+
+  // useEffect(() => {
+  //   dispatch(loadUsers());
+  // }, []);
+
   return (
     <Router>
       <div className="App">

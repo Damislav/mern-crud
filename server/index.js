@@ -8,7 +8,7 @@ dotenv.config();
 
 // ¸middleware
 app.use(cors());
-morgan("tiny");
+app.use(morgan("tiny"));
 app.use(express.json());
 
 mongoose
@@ -22,7 +22,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/api", require("./routes/todoRoutes"));
-
+app.use("/api", require("./routes/authRoutes"));
 // app.use("/api/users", userRoute);
 app.listen(5000, () => {
   console.log("Backend is running.");
