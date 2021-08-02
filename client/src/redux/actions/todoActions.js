@@ -20,8 +20,8 @@ export const getContacts = () => async (dispatch) => {
 };
 // ¸get single todo
 export const getContact = (id) => async (dispatch) => {
-  const res = await axios.get(`${process.env.REACT_APP_API}/${id}`);
-  console.log(res.data);
+  const res = await axios.get(`${process.env.REACT_APP_API}/edit/${id}`);
+  // console.log(res.data);
   dispatch({
     type: GET_CONTACT,
     payload: res.data,
@@ -47,7 +47,11 @@ export const deleteContact = (id) => async (dispatch) => {
 };
 // ¸edit todo
 export const updateContact = (todo) => async (dispatch) => {
-  const res = await axios.put(`${process.env.REACT_APP_API}/${todo.id}`, todo);
+  const res = await axios.put(
+    `${process.env.REACT_APP_API}/edit/${todo._id}`,
+    todo
+  );
+  console.log(res);
   dispatch({
     type: UPDATE_CONTACT,
     payload: res.data,

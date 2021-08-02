@@ -10,7 +10,6 @@ import {
 const initialState = {
   todos: [],
   todo: {},
-  loading: true,
 };
 
 //        eslint-disable-next-line
@@ -20,13 +19,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         todos: action.payload,
-        loading: false,
       };
     case GET_CONTACT:
       return {
         ...state,
-        contact: action.payload,
-        loading: false,
+        todo: action.payload,
       };
     case DELETE_CONTACTS:
       return {
@@ -39,7 +36,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         todos: [action.payload, ...state.todos],
-        loading: false,
       };
 
     case UPDATE_CONTACT: {

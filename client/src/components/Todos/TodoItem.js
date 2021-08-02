@@ -10,19 +10,18 @@ import {
 import moment from "moment";
 import axios from "axios";
 import Spinner from "../Spinner/Spinner";
+import { Link } from "react-router-dom";
 
 // todo, deleteContact
 const TodoItem = ({ todo, deleteContact }) => {
   const [item, setItem] = useState("");
+  const [text, setText] = useState("");
   const [checkbox, setCheckbox] = useState(todo.completed);
+
   const onDeleteClick = (id) => {
     //// DELETE CONTACT ////
     deleteContact(id);
   };
-  // const handleEdit = () => {
-  //   //// EDIT ////
-
-  // toggle line through completed
 
   const handleCompleted = async (id) => {
     const res = await axios.get(`${process.env.REACT_APP_API}/${id}`);
@@ -32,6 +31,9 @@ const TodoItem = ({ todo, deleteContact }) => {
     console.log(item);
   };
 
+  // const handleCheckbox = (e) => {
+  //   setCheckbox(!checkbox);
+  // };
   const handleCheckbox = (e) => {
     setCheckbox(!checkbox);
   };
@@ -42,22 +44,26 @@ const TodoItem = ({ todo, deleteContact }) => {
         <div className="todo-container">
           <span>
             <input
-              onChange={handleCheckbox}
+              onChange={(e) => handleCheckbox(e)}
               checked={checkbox}
               onClick={() => handleCompleted(todo._id)}
               type="checkbox"
             />
           </span>
-          <h4 className={todo.completed ? "completed  item-text" : "item-text"}>
-            {todo.text}
-          </h4>
+          <input
+            disabled
+            style={{ background: "none", outline: "none" }}
+            className={todo.completed ? "completed  item-text" : "item-text"}
+            value={todo.text}
+          />
+
           <div className="icon-container">
             <span>
               {moment(todo.createdAt).format("MMMM Do YYYY, h:mm:ss a")}
             </span>
-            <button className="icon-button">
+            <Link to={`/edit/${todo._id}`} className="icon-button">
               <i className="fas fa-pen"></i>
-            </button>
+            </Link>
             <button
               onClick={() => onDeleteClick(todo._id)}
               className="icon-button"

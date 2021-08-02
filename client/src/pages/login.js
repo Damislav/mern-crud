@@ -24,7 +24,8 @@ const Login = () => {
         //   type: LOGIN_USER,
         //   payload: res.data,
         // });
-        dispatch(loginUser(res.data));
+        loginUser(res.data);
+
         history.push("/");
       }
     } catch (err) {

@@ -20,6 +20,15 @@ const UserSchema = new mongoose.Schema(
       required: true,
       min: 6,
     },
+    googleId: {
+      type: String,
+    },
+    secret: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

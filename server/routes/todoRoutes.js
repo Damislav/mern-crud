@@ -5,7 +5,7 @@ const Todo = require("../models/Todo");
 // GET ALL TODOS
 router.get("/", async (req, res) => {
   try {
-    let todos = await Todo.find().sort({ createdAt: -1 });
+    let todos = await Todo.find({}).sort({ createdAt: -1 });
 
     res.status(200).json(todos);
   } catch (err) {
@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
   }
 });
 // GET SINGLE TODO
-router.get("/:id", async (req, res) => {
+router.get("/edit/:id", async (req, res) => {
   const id = req.params.id;
   try {
     let todos = await Todo.findById(id);
@@ -50,7 +50,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 // EDIT TODO
-router.put("/:id", async (req, res) => {
+router.put("/edit/:id", async (req, res) => {
   try {
     const updatedTodo = await Todo.findByIdAndUpdate(
       req.params.id,

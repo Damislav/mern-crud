@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import "./Navbar.css";
 const Navbar = () => {
+  const { user } = useSelector((state) => ({ ...state }));
+
   const history = useHistory();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => ({ ...state }));
 
   const handleLogout = (e) => {
     e.preventDefault();

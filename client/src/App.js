@@ -7,6 +7,7 @@ import Register from "./pages/register";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { loadUsers } from "./redux/actions/todoActions";
+import TodoEditItem from "./components/Todos/TodoEditItem";
 
 function App() {
   // let dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
         <div />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/edit/:_id" component={TodoEditItem} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
         </Switch>
